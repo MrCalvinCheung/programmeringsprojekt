@@ -1,0 +1,52 @@
+package run;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+
+
+public class MainMenuUser extends JPanel {
+	private JLabel lblMenu;
+	private JButton btnWithdraw;
+	private JButton btnDeposit;
+	private JButton btnTransfer;
+	private JButton btnBalance;
+	private JButton btnLogOut;
+	private JLabel lblFromAccount;
+
+	/**
+	 * Create the panel.
+	 */
+	public MainMenuUser() {
+		setLayout(null);
+		
+		lblMenu = new JLabel("User Menu");
+		lblMenu.setBounds(222, 51, 66, 16);
+		add(lblMenu);
+		
+		btnWithdraw = new JButton("Withdraw");
+		btnWithdraw.setBounds(73, 120, 110, 29);
+		add(btnWithdraw);
+		
+		btnDeposit = new JButton("Deposit");
+		btnDeposit.setBounds(340, 120, 110, 29);
+		add(btnDeposit);
+		
+		btnTransfer = new JButton("Transfer");
+		btnTransfer.setBounds(73, 200, 110, 29);
+		add(btnTransfer);
+		
+		btnBalance = new JButton("Balance");
+		btnBalance.setBounds(340, 200, 110, 29);
+		add(btnBalance);
+		
+		btnLogOut = new JButton("Log out");
+		btnLogOut.setBounds(200, 273, 110, 29);
+		add(btnLogOut);
+		
+		lblFromAccount = new JLabel("from account");
+		lblFromAccount.setBounds(83, 150, 84, 16);
+		add(lblFromAccount);
+
+	}
+
+}
