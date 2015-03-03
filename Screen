@@ -1,0 +1,91 @@
+package run;
+
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.EventQueue;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.SwingConstants;
+
+import java.awt.FlowLayout;
+
+public class Screen extends JFrame {
+
+	public static final String MAIN_MENU_USER = "Main Menu User";
+	public static final String LOGIN_SCREEN = "Login Screen";
+	private JPanel contentPane;
+	private JPanel cardPanel;
+	private JLabel lblCbsLogo;
+	private Icon cbsLogo;
+	private JPanel centerPanel;
+	private JPanel southPanel;
+	private CardLayout cl;
+	private Login login;
+	private MainMenuUser mainMenuUser;
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Screen frame = new Screen();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Screen() {
+		super("XB10's CBS BitCoin App");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 510, 610);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		cardPanel = new JPanel();
+		centerPanel = new JPanel();
+		southPanel = new JPanel();
+		
+		login = new Login();
+		mainMenuUser = new MainMenuUser();
+		cl = new CardLayout();
+		
+		
+		
+		contentPane.add(BorderLayout.CENTER, cardPanel);
+		cardPanel.setLayout(cl);
+		contentPane.add(BorderLayout.SOUTH, southPanel);
+		cbsLogo = new ImageIcon(getClass().getResource("cbs.png"));
+		southPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
+		cardPanel.add(login);
+		cardPanel.add(mainMenuUser);
+		cl.addLayoutComponent(login, LOGIN_SCREEN);
+		cl.addLayoutComponent(mainMenuUser, MAIN_MENU_USER);
+		cl.show(cardPanel,LOGIN_SCREEN);
+		
+		lblCbsLogo = new JLabel("");
+		lblCbsLogo.setHorizontalAlignment(SwingConstants.RIGHT);
+		southPanel.add(lblCbsLogo);
+		lblCbsLogo.setIcon(cbsLogo);
+		
+		mainMenuUser.setBackground(new Color(236,236,233));
+		login.setBackground(new Color(236,236,233));
+	}
+	
+	public void show(String card){
+		cl.show(this.cardPanel, card);
+	}
+}
