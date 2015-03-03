@@ -1,0 +1,92 @@
+package run;
+
+import java.awt.Color;
+import java.awt.event.ActionListener;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
+public class Login extends JPanel {
+	private JLabel lblBitCoinIcon;
+	private JLabel lblCbsLogo;
+	private JLabel lblUsername;
+	private Icon bitCoinLogo;
+	private JTextField usernameField;
+	private JLabel lblPassword;
+	private JPasswordField pwField;
+	private Icon cbsLogo;
+	private JButton btnLogin;
+	private JLabel lblUsernameOrPassword;
+
+	/**
+	 * Create the panel.
+	 */
+	
+	
+	public Login() {
+		setLayout(null);
+		
+		lblBitCoinIcon = new JLabel("");
+		lblBitCoinIcon.setBounds(131, 56, 240, 172);
+		add(lblBitCoinIcon);
+		
+		//bitcoin logo
+		bitCoinLogo = new ImageIcon(getClass().getResource("Logo.png"));
+		lblBitCoinIcon.setIcon(bitCoinLogo);
+		
+		
+		lblUsername = new JLabel("Username:");
+		lblUsername.setBounds(222, 275, 66, 16);
+		add(lblUsername);
+		
+		usernameField = new JTextField();
+		usernameField.setBounds(145, 302, 221, 28);
+		add(usernameField);
+		usernameField.setColumns(10);
+		
+		lblPassword = new JLabel("Password:");
+		lblPassword.setBounds((255-(63/2)), 343, 63, 16);
+		add(lblPassword);
+		
+		pwField = new JPasswordField();
+		pwField.setBounds(145, 371, 220, 28);
+		add(pwField);
+		pwField.setColumns(10);
+		
+		btnLogin = new JButton("Login");
+		btnLogin.setBounds(210, 440, 90, 29);
+		add(btnLogin);
+		
+		//tilføjelse af label til at viste fejlindtastning af bruger eller pw
+		lblUsernameOrPassword = new JLabel("Username or password wrong!");
+		lblUsernameOrPassword.setForeground(Color.RED);
+		lblUsernameOrPassword.setBounds(160, 412, 190, 16);
+		lblUsernameOrPassword.setVisible(false);
+		add(lblUsernameOrPassword);	
+
+	}
+
+	public JTextField getUsernameField() {
+		return usernameField;
+	}
+
+	public JPasswordField getPwField() {
+		return pwField;
+	}
+
+	public JButton getBtnLogin() {
+		return btnLogin;
+	}
+
+	public JLabel getLblUsernameOrPassword() {
+		return lblUsernameOrPassword;
+	}
+	public void addActionListener(ActionListener l){
+		btnLogin.addActionListener(l);
+	}
+}
